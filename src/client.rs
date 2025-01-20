@@ -1,15 +1,11 @@
 use super::shared::{derive_aes_key, ecdh_compute_shared_secret, EphemeralKeyPair};
-use crate::{server::ServerEncryptedRes, to_hex_str};
+use crate::server::ServerEncryptedRes;
 use aes_gcm::{
     aead::{Aead, KeyInit},
     Aes256Gcm, Nonce,
 };
-use ring::agreement::{
-    agree_ephemeral, EphemeralPrivateKey, PublicKey, UnparsedPublicKey, ECDH_P256,
-};
+use ring::agreement::EphemeralPrivateKey;
 use ring::error::Unspecified;
-use ring::hkdf::{self, Salt};
-use ring::rand::SystemRandom;
 use serde::{Deserialize, Serialize};
 
 /// Generate per request. Do not reuse.

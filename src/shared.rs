@@ -74,7 +74,6 @@ pub fn to_hex_str(v: &[u8]) -> String {
             .map(|b| format!("{:02x}", b))
             .collect::<Vec<_>>()
             .join("")
-            .to_string()
     )
 }
 pub fn from_hex_str(mut s: &str) -> Option<Vec<u8>> {

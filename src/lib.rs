@@ -2,10 +2,13 @@ mod client;
 mod server;
 pub(crate) mod shared;
 
-// utility
-pub use shared::{from_hex_str, to_hex_str};
+// api
+pub use client::{ClientReq, EphemeralClient, ResponseDecryptor};
+pub use server::{EphemeralServer, ServerEncryptedRes};
 // re-export ring error
 pub use ring::error::Unspecified;
+// utility
+pub use shared::{from_hex_str, to_hex_str};
 
 #[cfg(test)]
 mod test {
@@ -32,7 +35,7 @@ mod test {
         let decrypted_secret = decryptor.decrypt(&res)?;
 
         assert_eq!(secret.as_bytes(), &decrypted_secret);
-        assert!(&decrypted_secret != &res.ciphertext);
+        assert!(decrypted_secret != res.ciphertext);
         Ok(())
     }
 }
