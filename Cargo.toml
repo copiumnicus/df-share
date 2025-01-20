@@ -2,6 +2,8 @@
 name = "df-share"
 version = "0.1.0"
 edition = "2021"
+description = "secret sharing"
+license = "MIT"
 
 [dependencies]
 ring = "0.16"
