@@ -38,8 +38,10 @@
 //! ```
 //!
 //! **Important Note**: Because the server generates an ephemeral key pair each time, there's no built-in guarantee of the server's identity. If you need server authentication, you must maintain long-term server key material and pin the server public key on the client or use HTTPS/TLS with certificate validation.
+mod art;
 mod client;
 mod server;
+pub use art::generate_ascii_art;
 pub(crate) mod shared;
 
 // api
